@@ -33,12 +33,12 @@ jobs:
         run: |
           IMAGE_NAME=ghcr.io/9182029380/spring-boot-k8s-app
           
-          docker build -t ghcr.io/9182029380/sprig-boot-k8s-app:latest .
-          docker tag ghcr.io/9182029380/sprig-boot-k8s-app:latest ghcr.io/9182029380/sprig-boot-k8s-app:${{ github.sha }}
+          docker build -t $IMAGE_NAME:latest .
+          docker tag $IMAGE_NAME:latest $IMAGE_NAME:${{ github.sha }}
 
       - name: Push to GHCR
         run: |
           IMAGE_NAME=ghcr.io/9182029380/spring-boot-k8s-app
           
-          docker push ghcr.io/9182029380/sprig-boot-k8s-app:latest
-          docker push ghcr.io/9182029380/sprig-boot-k8s-app:${{ github.sha }}
+          docker push $IMAGE_NAME:latest
+          docker push $IMAGE_NAME:${{ github.sha }}
